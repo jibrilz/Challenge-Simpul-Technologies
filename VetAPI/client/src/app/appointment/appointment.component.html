@@ -1,0 +1,43 @@
+<div class="container">
+    <div><h1>APPOINTMENT</h1></div>
+    <div class="search-container">
+      <mat-form-field appearance="fill">
+        <input matInput placeholder="search" autocomplete="off" (keyup)="filterData($event)">  
+      </mat-form-field>
+    </div>
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="period">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> DATE </th>
+        <td mat-cell *matCellDef="let element"> {{element.period | date:'long'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="petName">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> PET NAME </th>
+        <td mat-cell *matCellDef="let element"> {{element.petName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ownerName">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> OWNER'S NAME </th>
+        <td mat-cell *matCellDef="let element"> {{element.ownerName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="kontak">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> CONTACT </th>
+        <td mat-cell *matCellDef="let element"> {{element.kontak}} </td>
+      </ng-container>
+  
+      
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+  
+    </table>
+    <mat-paginator #paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 50, 100]"
+    >
+  </mat-paginator>
+  
+  </div>
